@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Flights } from "../components/flights";
+
 export default class FlghtsContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -36,19 +38,14 @@ export default class FlghtsContainer extends React.Component {
 
   render() {
     const { error, isLoaded, flightData } = this.state;
+    
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
       return (
-        <div>
-          {flightData.map(flight => (
-            <div key={flight.id}>
-              {flight.id} --> {flight.destination}
-            </div>
-          ))}
-        </div>
+        <Flights {...{ flightData }} />
       );
     }
   }
