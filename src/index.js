@@ -3,14 +3,14 @@ import { render } from "react-dom";
 import { Provider } from "react-redux";
 
 import store from "./store";
-import FlightsContainer from "./containers/flightsContainer";
+import PageContainer from "./containers/pageContainer";
 
 import "./style/index.scss";
 
 
 render(
   <Provider store={store}>
-    <FlightsContainer />
+    <PageContainer />
   </Provider>,
   document.getElementById('root')
 )

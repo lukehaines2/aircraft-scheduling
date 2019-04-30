@@ -1,34 +1,30 @@
 import React from "react";
 
-import { Flights } from "../components/flights";
+import { Aircrafts } from "../components/aircrafts";
 
-export default class FlghtsContainer extends React.Component {
+export default class AircraftContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
       isLoaded: false,
-      flightData: [],
-      pagination: {}
+      aircraftData: []
     };
   }
 
   componentDidMount() {
-    this.callFlightApi();
+    this.callAircraftApi();
   }
 
-  callFlightApi(limit, offset) {
-    const flightLimit = limit ? `?limit=${limit}` : "?limit=25";
-    const flightOffset = offset ? `&offset=${offset}` : "&offset=0";
-    const url = `https://infinite-dawn-93085.herokuapp.com/flights${flightLimit}${flightOffset}`;
+  callAircraftApi() {
+    const url = "https://infinite-dawn-93085.herokuapp.com/aircrafts";
     fetch(url)
       .then(res => res.json())
       .then(
         (result) => {
           this.setState({
             isLoaded: true,
-            flightData: result.data,
-            pagination: result.pagination
+            aircraftData: result.data[0],
           });
         },
         // Note: it's important to handle errors here
@@ -44,7 +40,7 @@ export default class FlghtsContainer extends React.Component {
   }
 
   render() {
-    const { error, isLoaded, flightData } = this.state;
+    const { error, isLoaded, aircraftData } = this.state;
 
     if (error) {
       return <div>Error: {error.message}</div>;
@@ -52,7 +48,7 @@ export default class FlghtsContainer extends React.Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <Flights {...{ flightData }} />
+        <Aircrafts {...{ aircraftData }} />
       );
     }
   }

@@ -1,0 +1,12 @@
+.aircraftsContainer {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid red;
+  .sectionHeader {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  .aircrafts {
+    // 
+  }
+}
