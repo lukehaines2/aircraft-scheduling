@@ -1,14 +1,13 @@
 import React from "react";
+import { Col } from "react-flexbox-grid";
 
 import "./rotation.scss";
 
 export const Rotation = props => {
   return (
-    <div className="rotationContainer">
-      <h3>Rotation GABCD</h3>
+    <Col xs={12} sm={5} className="rotationContainer">
+      <div className="sectionHeader">Rotation GABCD</div>
       <div>Timeline component</div>
-    </div>
+    </Col>
   )
 }
-
-export default Rotation

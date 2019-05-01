@@ -1,17 +1,29 @@
 import React from "react";
+import { Row, Col } from "react-flexbox-grid";
 
 import "./flights.scss";
 
 export const Flights = props => {
   const { flightData } = props;
-
+console.log(flightData);
   return (
-    <div className="flightsContainer">
+    <Col xs={12} sm={3} className="flightsContainer">
+      <div className="sectionHeader">Flights</div>
       {flightData.map(flight => (
-        <div key={flight.id} className="flight">
-          {flight.id} --> {flight.destination}
+        <div key={flight.id} className="flightTicket">
+          <div>{flight.id}</div>
+          <Row>
+            <Col xs>
+              <div>{flight.origin}</div>
+              <div>{flight.readable_departure}</div>
+            </Col>
+            <Col xs>
+              <div>{flight.destination}</div>
+              <div>{flight.readable_arrival}</div>
+            </Col>
+          </Row>
         </div>
       ))}
-    </div>
+    </Col>
   )
 }

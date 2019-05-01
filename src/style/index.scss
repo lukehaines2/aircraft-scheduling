@@ -20,8 +20,11 @@ code {
   flex-direction: column;
   padding: 15px;
   align-content: center;
-  .aircraftWrapper {
-    display: flex;
-    justify-content: space-between;
-  }
+}
+
+.sectionHeader {
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
