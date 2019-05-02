@@ -1,6 +1,9 @@
+@import "../../style/variables.scss";
+
 .aircraftsContainer {
-  border: 1px solid red;
-  .aircrafts {
-    // 
+  // border: 1px solid red;
+  .aircraftTicket {
+    @include ticketStyle();
+    align-items: center;
   }
 }

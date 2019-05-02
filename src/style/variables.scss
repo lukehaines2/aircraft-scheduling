@@ -1,0 +1,19 @@
+$ticketBgColor: #e7e7e7;
+
+@mixin ticketStyle() {
+  height: 95px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background: $ticketBgColor;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 1px 1px 3px rgba(33,33,33,.2);
+  }
+  .title {
+    font-weight: 500;
+  }
+}
+
+
+

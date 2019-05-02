@@ -5,13 +5,13 @@ import "./flights.scss";
 
 export const Flights = props => {
   const { flightData } = props;
-console.log(flightData);
+
   return (
     <Col xs={12} sm={3} className="flightsContainer">
       <div className="sectionHeader">Flights</div>
       {flightData.map(flight => (
         <div key={flight.id} className="flightTicket">
-          <div>{flight.id}</div>
+          <div className="title">{flight.id}</div>
           <Row>
             <Col xs>
               <div>{flight.origin}</div>
