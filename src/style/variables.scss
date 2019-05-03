@@ -1,7 +1,8 @@
-$ticketBgColor: #e7e7e7;
+$ticketBgColor: #f5f4f4;
+$ticketHeight: 95px;
 
 @mixin ticketStyle() {
-  height: 95px;
+  height: $ticketHeight;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -15,5 +16,9 @@ $ticketBgColor: #e7e7e7;
   }
 }
 
-
-
+@mixin ticketWrapper() {
+  height: 90vh;
+  padding: 10px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+}

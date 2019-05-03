@@ -6,24 +6,30 @@ import "./flights.scss";
 export const Flights = props => {
   const { flightData } = props;
 
+  const onClick = (e) => {
+    console.log('e', e.currentTarget.dataset.flight);
+  };
+
   return (
     <Col xs={12} sm={3} className="flightsContainer">
       <div className="sectionHeader">Flights</div>
-      {flightData.map(flight => (
-        <div key={flight.id} className="flightTicket">
-          <div className="title">{flight.id}</div>
-          <Row>
-            <Col xs>
-              <div>{flight.origin}</div>
-              <div>{flight.readable_departure}</div>
-            </Col>
-            <Col xs>
-              <div>{flight.destination}</div>
-              <div>{flight.readable_arrival}</div>
-            </Col>
-          </Row>
-        </div>
-      ))}
+      <div className="ticketWrapper">
+        {flightData.map(flight => (
+          <div key={flight.id} className="flightTicket" data-flight={flight.id} onClick={onClick}>
+            <div className="title">{flight.id}</div>
+            <Row>
+              <Col xs>
+                <div>{flight.origin}</div>
+                <div>{flight.readable_departure}</div>
+              </Col>
+              <Col xs>
+                <div>{flight.destination}</div>
+                <div>{flight.readable_arrival}</div>
+              </Col>
+            </Row>
+          </div>
+        ))}
+      </div>
     </Col>
   )
 }

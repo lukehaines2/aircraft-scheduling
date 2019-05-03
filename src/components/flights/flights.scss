@@ -1,12 +1,14 @@
 @import "../../style/variables.scss";
 
 .flightsContainer {
-  // border: 1px solid red;
   max-height: 90vh;
   overflow-y: auto;
-  .flightTicket {
-    @include ticketStyle();
-    margin: 0 auto 15px auto;
-    text-align: center;
+  .ticketWrapper {
+    @include ticketWrapper();
+    .flightTicket {
+      @include ticketStyle();
+      margin: 0 auto 15px auto;
+      text-align: center;
+    }
   }
 }

@@ -1,9 +1,11 @@
 @import "../../style/variables.scss";
 
 .aircraftsContainer {
-  // border: 1px solid red;
-  .aircraftTicket {
-    @include ticketStyle();
-    align-items: center;
+  .ticketWrapper {
+    @include ticketWrapper();
+    .aircraftTicket {
+      @include ticketStyle();
+      align-items: center;
+    }
   }
 }

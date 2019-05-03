@@ -1,20 +1,23 @@
 @import "../../style/variables.scss";
 
 .rotationContainer {
-  // border: 1px solid red;
-  .rotationTicket {
-    @include ticketStyle();
-    text-align: center;
-    margin: 0 auto 15px auto;
-  }
-  .timelineLabels {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-  }
-  .timeline {
-    height: 50px;
-    width: 100%;
-    background: green;
+  .ticketWrapper {
+    @include ticketWrapper();
+    border: none;
+    .rotationTicket {
+      @include ticketStyle();
+      text-align: center;
+      margin: 0 auto 15px auto;
+    }
+    .timelineLabels {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+    .timeline {
+      height: 50px;
+      width: 100%;
+      background: green;
+    }
   }
 }
