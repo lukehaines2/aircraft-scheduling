@@ -50,14 +50,13 @@ export default class FlghtsContainer extends React.Component {
         this.props.handleChosenFlight(i);
       }
       return i.id !== flightId
-    })
+    });
     this.setState({
       flightData: newFlights
     });
   }
 
   render() {
-    const { handleChosenFlight } = this.props;
     const { error, isLoaded, flightData } = this.state;
 
     if (error) {
