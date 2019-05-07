@@ -2,7 +2,7 @@ import React from "react";
 
 import { Flights } from "../components/flights";
 
-export default class FlghtsContainer extends React.Component {
+export default class FlightsContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,9 +18,11 @@ export default class FlghtsContainer extends React.Component {
   }
 
   callFlightApi(limit, offset) {
-    const flightLimit = limit ? `?limit=${limit}` : "?limit=25";
-    const flightOffset = offset ? `&offset=${offset}` : "&offset=0";
-    const url = `https://infinite-dawn-93085.herokuapp.com/flights${flightLimit}${flightOffset}`;
+    let queryParams = [];
+    queryParams.push(limit && `limit=${limit}`);
+    queryParams.push(offset && `offset=${offset}`);
+    const url = `https://infinite-dawn-93085.herokuapp.com/flights?${queryParams.join('&')}`;
+
     fetch(url)
       .then(res => res.json())
       .then(
