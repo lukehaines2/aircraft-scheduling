@@ -47,18 +47,14 @@ export default class FlightsContainer extends React.Component {
 
   handleFlightClick(flightId) {
     const { flightData } = this.state;
-    const newFlights = flightData.filter(i => {
-      if (i.id === flightId) {
-        this.props.handleChosenFlight(i);
-      }
-      return i.id !== flightId
-    });
-    this.setState({
-      flightData: newFlights
-    });
+    // Find full flight obj by id, and dispatch to parent to be used in rotation component
+    flightData.map(i => i.id === flightId &&
+      this.props.handleChosenFlight(i)
+    );
   }
 
   render() {
+    const { chosenFlights } = this.props;
     const { error, isLoaded, flightData } = this.state;
 
     if (error) {
@@ -67,7 +63,7 @@ export default class FlightsContainer extends React.Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <Flights {...{ flightData }} handleFlightClick={this.handleFlightClick} />
+        <Flights {...{ flightData, chosenFlights }} handleFlightClick={this.handleFlightClick} />
       );
     }
   }

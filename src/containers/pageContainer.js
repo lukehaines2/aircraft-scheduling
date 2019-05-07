@@ -16,9 +16,15 @@ export default class PageContainer extends React.Component {
   }
 
   handleChosenFlight(flight) {
+    const { chosenFlights } = this.state;
+    const lastEl = chosenFlights[chosenFlights.length - 1];
+    // If the selected flight has an earlier departure time that lastElement, fire an alert but don't use blocking / prohibiting UI as the user may want to swap the "scheduled" flights around.
+    if (lastEl && lastEl.departuretime > flight.departuretime) {
+      alert("Please note: The last flight you selected has an earlier departure time than the flight preceeding it!");
+    }
     // Add chosen flight to the array, maintaing current state
     this.setState({
-      chosenFlights: [...this.state.chosenFlights, flight]
+      chosenFlights: [...chosenFlights, flight]
     });
   }
 
@@ -43,7 +49,7 @@ export default class PageContainer extends React.Component {
           <Row between="xs">
             <AircraftContainer />
             <Rotation {...{chosenFlights}} handleRemoveFlight={this.handleRemoveFlight} />
-            <FlightsContainer handleChosenFlight={this.handleChosenFlight} />
+            <FlightsContainer {...{chosenFlights}} handleChosenFlight={this.handleChosenFlight} />
           </Row>
         </Grid>
       </div>
