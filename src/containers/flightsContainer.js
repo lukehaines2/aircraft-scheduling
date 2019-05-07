@@ -8,9 +8,9 @@ export default class FlghtsContainer extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      flightData: [],
-      pagination: {}
+      flightData: []
     };
+    this.handleFlightClick = this.handleFlightClick.bind(this);
   }
 
   componentDidMount() {
@@ -43,7 +43,21 @@ export default class FlghtsContainer extends React.Component {
       )
   }
 
+  handleFlightClick(flightId) {
+    const { flightData } = this.state;
+    const newFlights = flightData.filter(i => {
+      if (i.id === flightId) {
+        this.props.handleChosenFlight(i);
+      }
+      return i.id !== flightId
+    })
+    this.setState({
+      flightData: newFlights
+    });
+  }
+
   render() {
+    const { handleChosenFlight } = this.props;
     const { error, isLoaded, flightData } = this.state;
 
     if (error) {
@@ -52,7 +66,7 @@ export default class FlghtsContainer extends React.Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <Flights {...{ flightData }} />
+        <Flights {...{ flightData }} handleFlightClick={this.handleFlightClick} />
       );
     }
   }

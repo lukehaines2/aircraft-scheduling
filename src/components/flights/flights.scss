@@ -1,10 +1,9 @@
 @import "../../style/variables.scss";
 
 .flightsContainer {
-  max-height: 90vh;
-  overflow-y: auto;
   .ticketWrapper {
     @include ticketWrapper();
+    overflow-y: auto;
     .flightTicket {
       @include ticketStyle();
       margin: 0 auto 15px auto;

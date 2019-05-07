@@ -1,5 +1,9 @@
 @import "../../style/variables.scss";
 
+$timeLineIdle: lightgrey;
+$timeLineScheduled: green;
+$timeLineTurnaround: purple;
+
 .rotationContainer {
   .ticketWrapper {
     @include ticketWrapper();
@@ -9,15 +13,23 @@
       text-align: center;
       margin: 0 auto 15px auto;
     }
+    .emptyRotation {
+      @include ticketStyle();
+      margin-bottom: 30px;
+      padding: 15px;
+      border: 1px dashed lightgrey;
+      text-align: center;
+    }
     .timelineLabels {
       display: flex;
       justify-content: space-between;
       margin-bottom: 5px;
+      margin-top: 15px;
     }
     .timeline {
       height: 50px;
       width: 100%;
-      background: green;
+      background: $timeLineScheduled;
     }
   }
 }

@@ -4,17 +4,20 @@ import { Row, Col } from "react-flexbox-grid";
 import "./flights.scss";
 
 export const Flights = props => {
-  const { flightData } = props;
+  const { flightData, handleFlightClick } = props;
+  // Sort by flight ID (alphanumeric)
+  const flights = flightData.sort((a, b) => a.id - b.id);
 
   const onClick = (e) => {
-    console.log('e', e.currentTarget.dataset.flight);
+    handleFlightClick(e.currentTarget.dataset.flight);
   };
+
 
   return (
     <Col xs={12} sm={3} className="flightsContainer">
       <div className="sectionHeader">Flights</div>
       <div className="ticketWrapper">
-        {flightData.map(flight => (
+        {flights.map(flight => (
           <div key={flight.id} className="flightTicket" data-flight={flight.id} onClick={onClick}>
             <div className="title">{flight.id}</div>
             <Row>
