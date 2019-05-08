@@ -18,7 +18,7 @@ export const Rotation = props => {
           <RotationTicket {...{chosenFlights, handleRemoveFlight}} />
           : <EmptyRotation />
         }
-        <Timeline />
+        <Timeline {...{chosenFlights}} />
       </div>
     </Col>
   )

@@ -1,68 +1,49 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Key points:
+- Focus on Clean, Modular, Dry code
+- Commented code to try and explain some complexity
+- Create React App used for speed and familiarity
+- API pagination using Hooks
+- Loading, error and component render states give visible feedback for async calls
+- Styled closely to the spec, with additions like hover states and other minor UI bits.
 
-## Available Scripts
+### File structure:
+- Containers, Components -> inc scss files (and ideally tests w/ more time)
+- Styling uses SASS
+- Public - Nothing special here, but you might recognise the favicon ;)
 
-In the project directory, you can run:
+### Global styles:
+- Reusable variables and mixins - inside `variables.scss`
+- Nesting for readability.
+Note: Would consider something like a BEM type approach to naming for consistency if this were a larger app.
+
+### With more time:
+- Timeline that adheres to exact 24hr timings
+- HOC / Middleware for API + reusable loading state
+
+### Testing:
+- No unit testing purely from a time perspective.
+- Did include enzyme and a `setupTests.js` file.
+
+### State management:
+I deliberately didn't use any additional state management such as Redux, because I'm used to doing so and for an app of this scale I wanted to challenge myself and take a more "bare bones" type approach.
+
+### Additional Notes:
+Redux definitely would have been helpful to clean the containers a little bit and to make use of **selectors** for simple state comparisons when adding and removing flights from the arrays within the flights and rotation components.
+
+## Screenshots:
+
+1. No flights selected:
+
+![picture alt](./readmeScreens/noFlights.png "Aircraft scheduling app")
+
+2. Some flights selected:
+
+![picture alt](./readmeScreens/flights.png "Aircraft scheduling app")
+
+=============
+
+### To run:
+
+### `npm i`
 
 ### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

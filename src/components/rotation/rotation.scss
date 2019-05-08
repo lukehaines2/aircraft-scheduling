@@ -3,6 +3,7 @@
 $timeLineIdle: lightgrey;
 $timeLineScheduled: green;
 $timeLineTurnaround: purple;
+$timelineHeight: 50px;
 
 .rotationContainer {
   .ticketWrapper {
@@ -28,9 +29,28 @@ $timeLineTurnaround: purple;
       margin-top: 15px;
     }
     .timeline {
-      height: 50px;
+      height: $timelineHeight;
       width: 100%;
+      display: flex;
       background: $timeLineIdle;
+      &.scheduled {
+        background: $timeLineScheduled;
+      }
+      .timeblock {
+        width: 20%;
+        height: $timelineHeight;
+        display: flex;
+        .scheduled {
+          width: 80%;
+          height: $timelineHeight;
+          background: $timeLineScheduled;
+        }
+        .turnaround {
+          width: 20%;
+          height: $timelineHeight;
+          background: $timeLineTurnaround;
+        }
+      }
     }
   }
 }
