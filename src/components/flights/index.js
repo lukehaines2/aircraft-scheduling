@@ -1,28 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { Row, Col } from "react-flexbox-grid";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+
+import { FlightHeader } from "./flightHeader";
 
 import "./flights.scss";
 
-// Util function to compare rotation and flight arrays
-// It hides previously chosen flights (in the rotation col) from the flights column
-// Note: without mutation or needing shared state in the parent container - (pageContainer)
-const hideChosen = (flightData, chosenFlights) => {
-  // https://stackoverflow.com/a/44204227
-  const flights = new Set(flightData);
-  const toRemove = new Set(chosenFlights);
-
-  const difference = new Set([...flights].filter((i) => !toRemove.has(i)));
-  return Array.from(difference)
-}
-
 export const Flights = props => {
   const { flightData, chosenFlights, handleFlightClick, handlePaginate } = props;
-  
-  // HOOKS STATE ==========================
-  const [pagCount, setCount] = useState(0);
-  // HOOKS STATE ==========================
 
   let filteredFlights = flightData;
   // If we have chosenFlights, remove them from view (much like a Redux selector)
@@ -33,45 +17,14 @@ export const Flights = props => {
   // Sort by flight ID (alphanumeric)
   const flights = filteredFlights.sort((a, b) => a.id - b.id);
 
-
   const onClick = (e) => {
     handleFlightClick(e.currentTarget.dataset.flight);
-  };
-
-  const paginate = () => {
-    // Use hooks (gotta use variable cos useState is async)
-    let count = pagCount + 25;
-    setCount(count);
-    handlePaginate(null, count);
-  };
-
-  const prevPagination = () => {
-    // Use hooks (gotta use variable cos useState is async)
-    let count = pagCount - 25;
-    if (pagCount >= 25) {
-      setCount(count);
-      handlePaginate(null, count);
-    }
   };
 
 
   return (
     <Col xs={12} sm={3} className="flightsContainer">
-      
-      <div className="sectionHeader">
-        <Row between="xs">
-          <Col xs>
-            <FontAwesomeIcon icon={faChevronLeft} size="xs" onClick={prevPagination} />
-          </Col>
-          <Col xs>
-            <span>Flights</span>
-          </Col>
-          <Col xs>
-            <FontAwesomeIcon icon={faChevronRight} size="xs" onClick={paginate} />
-          </Col>
-        </Row>
-      </div>
-
+      <FlightHeader {...{handlePaginate}} />
       <div className="ticketWrapper">
         {flights.map(flight => (
           <div key={flight.id} className="flightTicket" data-flight={flight.id} onClick={onClick}>
@@ -92,4 +45,17 @@ export const Flights = props => {
 
     </Col>
   )
+}
+
+
+// Util function to compare rotation and flight arrays
+// It hides previously chosen flights (in the rotation col) from the flights column
+// Note: without mutation or needing shared state in the parent container - (pageContainer)
+const hideChosen = (flightData, chosenFlights) => {
+  // https://stackoverflow.com/a/44204227
+  const flights = new Set(flightData);
+  const toRemove = new Set(chosenFlights);
+
+  const difference = new Set([...flights].filter((i) => !toRemove.has(i)));
+  return Array.from(difference)
 }

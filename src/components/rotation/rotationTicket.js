@@ -5,7 +5,7 @@ import { faPlane } from "@fortawesome/free-solid-svg-icons";
 
 export const RotationTicket = ({chosenFlights, handleRemoveFlight}) => {
   // Sort by departure time
-  const flights = chosenFlights.sort( (a, b) => a.departuretime - b.departuretime );
+  const flights = chosenFlights.sort((a, b) => a.departuretime - b.departuretime);
 
   const onClick = (e) => {
     handleRemoveFlight(e.currentTarget.dataset.flight);
