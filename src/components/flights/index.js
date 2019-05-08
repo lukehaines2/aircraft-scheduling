@@ -30,12 +30,10 @@ export const Flights = props => {
   if (chosenFlights.length) {
     filteredFlights = hideChosen(flightData, chosenFlights);
   }
-
   // Sort by flight ID (alphanumeric)
   const flights = filteredFlights.sort((a, b) => a.id - b.id);
 
 
-  // Bindings =========
   const onClick = (e) => {
     handleFlightClick(e.currentTarget.dataset.flight);
   };
@@ -55,7 +53,6 @@ export const Flights = props => {
       handlePaginate(null, count);
     }
   };
-  // Bindings =========
 
 
   return (

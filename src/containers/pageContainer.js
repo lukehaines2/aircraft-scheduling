@@ -43,7 +43,7 @@ export default class PageContainer extends React.Component {
     return (
       <div className="pageContainer">
         <div style={{textAlign:"center"}}>
-          <h3>{new Date().toLocaleDateString('en-GB')}</h3>
+          <h4>{new Date().toLocaleDateString('en-GB')}</h4>
         </div>
         <Grid fluid>
           <Row between="xs">

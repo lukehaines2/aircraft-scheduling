@@ -12,7 +12,7 @@ export const Aircrafts = props => {
       <div className="ticketWrapper">
         <div className="aircraftTicket">
           <div className="title">{aircraftData.ident}</div>
-          <div>58%</div>
+          <div>Efficiency: 58%</div>
         </div>
       </div>
     </Col>
