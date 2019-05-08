@@ -11,6 +11,7 @@ export default class FlightsContainer extends React.Component {
       flightData: []
     };
     this.handleFlightClick = this.handleFlightClick.bind(this);
+    this.handlePaginate = this.handlePaginate.bind(this);
   }
 
   componentDidMount() {
@@ -53,6 +54,10 @@ export default class FlightsContainer extends React.Component {
     );
   }
 
+  handlePaginate(limit, offset) {
+    this.callFlightApi(limit, offset);
+  }
+
   render() {
     const { chosenFlights } = this.props;
     const { error, isLoaded, flightData } = this.state;
@@ -63,7 +68,10 @@ export default class FlightsContainer extends React.Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <Flights {...{ flightData, chosenFlights }} handleFlightClick={this.handleFlightClick} />
+        <Flights {...{ flightData, chosenFlights }}
+          handleFlightClick={this.handleFlightClick}
+          handlePaginate={this.handlePaginate}
+        />
       );
     }
   }
