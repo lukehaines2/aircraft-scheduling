@@ -41,6 +41,7 @@ export default class AircraftContainer extends React.Component {
 
   render() {
     const { error, isLoaded, aircraftData } = this.state;
+    const { chosenFlights } = this.props;
 
     if (error) {
       return <div>Error: {error.message}</div>;
@@ -48,7 +49,7 @@ export default class AircraftContainer extends React.Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <Aircrafts {...{ aircraftData }} />
+        <Aircrafts {...{ aircraftData, chosenFlights }} />
       );
     }
   }

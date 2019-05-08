@@ -30,7 +30,7 @@ export default class PageContainer extends React.Component {
 
   handleRemoveFlight(flight) {
     const { chosenFlights } = this.state;
-    // Remove flight from chosenFlights using ID of flight clicked
+    // Remove flight from chosenFlights
     const newFlights = chosenFlights.filter(i => i.id !== flight);
     this.setState({
       chosenFlights: newFlights
@@ -47,7 +47,7 @@ export default class PageContainer extends React.Component {
         </div>
         <Grid fluid>
           <Row between="xs">
-            <AircraftContainer />
+            <AircraftContainer {...{chosenFlights}} />
             <Rotation {...{chosenFlights}} handleRemoveFlight={this.handleRemoveFlight} />
             <FlightsContainer {...{chosenFlights}} handleChosenFlight={this.handleChosenFlight} />
           </Row>
